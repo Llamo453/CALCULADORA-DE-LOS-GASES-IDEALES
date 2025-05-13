@@ -2,7 +2,6 @@ import streamlit as st
 import random
 
 st.image("123.png")
-
 R = 0.0821  # L·atm/mol·K
 
 st.set_page_config(page_title="Calculadora de Gases Ideales", layout="centered")
