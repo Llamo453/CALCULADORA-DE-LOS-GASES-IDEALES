@@ -1,15 +1,12 @@
 import streamlit as st
 import random
-
+st.image("Captura de pantalla 2025-05-13 100519.png")
 # Constante universal de los gases
 R = 0.0821  # L·atm/mol·K
 
 st.set_page_config(page_title="Ley de Gases Ideales", page_icon="🧪", layout="centered")
 
 st.title("🧪 Calculadora de la Ley de Gases Ideales")   
-
-st.image("Captura de pantalla 2025-05-13 100519.png")
-
 st.markdown("Resuelve **PV = nRT** con unidades estándar:\n\n"
             "- Presión: atm\n"
             "- Volumen: litros\n"
