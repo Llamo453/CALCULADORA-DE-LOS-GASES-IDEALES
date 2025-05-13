@@ -1,6 +1,6 @@
 import streamlit as st
 import random
-st.image("Captura de pantalla 2025-05-13 100519.png")
+
 # Constante universal de los gases
 R = 0.0821  # L·atm/mol·K
 
