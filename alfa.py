@@ -1,3 +1,4 @@
+st.image("123.png")
 import streamlit as st
 import random
 
