@@ -6,6 +6,8 @@ R = 0.0821  # atm·L/mol·K
 
 st.set_page_config(page_title="Calculadora de Gases Ideales", layout="centered")
 
+st.image("QUÍMICA.png")
+
 st.title("💨 Calculadora de la Ecuación de los Gases Ideales")
 st.markdown("Resuelve **PV = nRT** seleccionando qué variable deseas calcular.")
 
