@@ -100,3 +100,4 @@ def generar_ejercicio():
 
 if nivel != "":
     generar_ejercicio()
+st.image("123.png")
