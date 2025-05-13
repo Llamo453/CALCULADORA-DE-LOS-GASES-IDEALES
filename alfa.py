@@ -7,7 +7,7 @@ R = 0.0821  # atm·L/mol·K
 st.set_page_config(page_title="Calculadora de Gases Ideales", layout="centered")
 
 st.title("💨 Calculadora de la Ecuación de los Gases Ideales")
-st.image("Captura de pantalla 2025-05-13 100519.jpg")
+
 st.markdown("Resuelve **PV = nRT** seleccionando qué variable deseas calcular.")
 
 opcion = st.selectbox("¿Qué variable deseas calcular?", ["Presión (P)", "Volumen (V)", "Temperatura (T)", "Número de moles (n)"])
