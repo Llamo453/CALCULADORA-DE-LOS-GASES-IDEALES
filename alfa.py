@@ -1,98 +1,102 @@
 import streamlit as st
 import random
 
-# Constante de los gases ideales en atm·L/mol·K
-R = 0.0821
+R = 0.0821  # L·atm/mol·K
 
 st.set_page_config(page_title="Calculadora de Gases Ideales", layout="centered")
-st.title("💨 Calculadora de la Ecuación de los Gases Ideales")
-st.markdown("**PV = nRT**")
 
-# Frases motivadoras
-frases = [
-    "🚀 ¡Cada cálculo te acerca más a la excelencia!",
-    "🌟 ¡Nunca dejes de aprender, lo estás haciendo increíble!",
-    "💡 La ciencia es el puente hacia un futuro mejor.",
-    "🔥 ¡Estás a un paso de dominar la química!",
-    "💪 ¡El conocimiento es tu mejor herramienta!",
-]
+st.title("🌡️ Calculadora de la Ecuación de los Gases Ideales")
+st.markdown("La ecuación universal es: **PV = nRT**")
 
-# Selección de variable a calcular
-opcion = st.selectbox("¿Qué variable deseas calcular?", ["Presión (P)", "Volumen (V)", "Temperatura (T)", "Número de moles (n)"])
+opcion = st.selectbox("¿Qué variable deseas calcular?", ["Selecciona...", "Presión (P)", "Volumen (V)", "Temperatura (T)", "Número de moles (n)"])
 
-def mostrar_resultado(variable, resultado, unidades):
-    st.success(f"✅ {variable} calculado: {resultado:.3f} {unidades}")
-    st.markdown(f"**{random.choice(frases)}**")
+def frase_inspiradora():
+    frases = [
+        "✨ ¡Sigue adelante, cada paso te acerca a tu meta!",
+        "🚀 ¡Nunca subestimes el poder de tu esfuerzo!",
+        "🌟 ¡Estás haciendo un gran trabajo!",
+        "🔥 ¡El conocimiento es poder, sigue aprendiendo!",
+        "💡 ¡Cada error es una nueva oportunidad para aprender!"
+    ]
+    return random.choice(frases)
 
-if opcion == "Presión (P)":
-    V = st.number_input("Volumen (L)", min_value=0.01)
-    n = st.number_input("Número de moles (mol)", min_value=0.01)
-    T = st.number_input("Temperatura (K)", min_value=0.01)
-    if st.button("Calcular Presión"):
-        P = (n * R * T) / V
-        mostrar_resultado("Presión", P, "atm")
+def calcular():
+    if opcion == "Presión (P)":
+        V = st.number_input("Volumen (L)", min_value=0.01)
+        n = st.number_input("Número de moles (mol)", min_value=0.01)
+        T = st.number_input("Temperatura (K)", min_value=0.01)
+        if st.button("Calcular Presión"):
+            P = (n * R * T) / V
+            st.success(f"La presión es {P:.2f} atm")
+            st.info(frase_inspiradora())
 
-elif opcion == "Volumen (V)":
-    P = st.number_input("Presión (atm)", min_value=0.01)
-    n = st.number_input("Número de moles (mol)", min_value=0.01)
-    T = st.number_input("Temperatura (K)", min_value=0.01)
-    if st.button("Calcular Volumen"):
-        V = (n * R * T) / P
-        mostrar_resultado("Volumen", V, "L")
+    elif opcion == "Volumen (V)":
+        P = st.number_input("Presión (atm)", min_value=0.01)
+        n = st.number_input("Número de moles (mol)", min_value=0.01)
+        T = st.number_input("Temperatura (K)", min_value=0.01)
+        if st.button("Calcular Volumen"):
+            V = (n * R * T) / P
+            st.success(f"El volumen es {V:.2f} L")
+            st.info(frase_inspiradora())
 
-elif opcion == "Temperatura (T)":
-    P = st.number_input("Presión (atm)", min_value=0.01)
-    V = st.number_input("Volumen (L)", min_value=0.01)
-    n = st.number_input("Número de moles (mol)", min_value=0.01)
-    if st.button("Calcular Temperatura"):
-        T = (P * V) / (n * R)
-        mostrar_resultado("Temperatura", T, "K")
+    elif opcion == "Temperatura (T)":
+        P = st.number_input("Presión (atm)", min_value=0.01)
+        n = st.number_input("Número de moles (mol)", min_value=0.01)
+        V = st.number_input("Volumen (L)", min_value=0.01)
+        if st.button("Calcular Temperatura"):
+            T = (P * V) / (n * R)
+            st.success(f"La temperatura es {T:.2f} K")
+            st.info(frase_inspiradora())
 
-elif opcion == "Número de moles (n)":
-    P = st.number_input("Presión (atm)", min_value=0.01)
-    V = st.number_input("Volumen (L)", min_value=0.01)
-    T = st.number_input("Temperatura (K)", min_value=0.01)
-    if st.button("Calcular Número de moles"):
-        n = (P * V) / (R * T)
-        mostrar_resultado("Número de moles", n, "mol")
+    elif opcion == "Número de moles (n)":
+        P = st.number_input("Presión (atm)", min_value=0.01)
+        V = st.number_input("Volumen (L)", min_value=0.01)
+        T = st.number_input("Temperatura (K)", min_value=0.01)
+        if st.button("Calcular Número de moles"):
+            n = (P * V) / (R * T)
+            st.success(f"El número de moles es {n:.2f} mol")
+            st.info(frase_inspiradora())
 
-st.divider()
+calcular()
 
-# ChatGPT integrador (simulado)
-st.subheader("🤖 Pregúntale a ChatGPT")
-pregunta = st.text_input("Escribe tu duda aquí:")
-if st.button("Preguntar a ChatGPT"):
-    st.info(f"🧠 Respuesta simulada: '{pregunta}' es una gran pregunta. Investiga conceptos como presión, volumen y temperatura. ¡Sigue aprendiendo!")
-    st.markdown(f"**{random.choice(frases)}**")
+st.markdown("---")
+st.subheader("🤖 ¿Tienes una duda?")
+pregunta = st.text_input("Escribe tu pregunta:")
 
-st.divider()
-
-# Generador de ejercicios
-st.subheader("📚 Generador de ejercicios para practicar")
-nivel = st.selectbox("Selecciona nivel de dificultad", ["Fácil", "Intermedio", "Avanzado"])
-
-def generar_ejercicio(nivel):
-    if nivel == "Fácil":
-        n, T, V = 1, 300, 24.6
-        P = round((n * R * T) / V, 2)
-        return f"¿Cuál es la presión (atm) si n={n} mol, T={T} K y V={V} L?", P
-    elif nivel == "Intermedio":
-        n, T, P = 2, 350, 1.5
-        V = round((n * R * T) / P, 2)
-        return f"¿Cuál es el volumen (L) si n={n} mol, T={T} K y P={P} atm?", V
+if st.button("Buscar en Google"):
+    if pregunta:
+        query = pregunta.replace(" ", "+")
+        st.markdown(f"[Buscar '{pregunta}' en Google](https://www.google.com/search?q={query})")
     else:
-        V, T, P = 10, 500, 2
-        n = round((P * V) / (R * T), 3)
-        return f"¿Cuántos moles hay si V={V} L, T={T} K y P={P} atm?", n
+        st.warning("Por favor escribe una pregunta.")
+    st.info(frase_inspiradora())
 
-if st.button("Generar ejercicio"):
-    pregunta, respuesta = generar_ejercicio(nivel)
-    st.write(pregunta)
-    opciones = [respuesta, round(respuesta * 0.9, 2), round(respuesta * 1.1, 2)]
+st.markdown("---")
+st.subheader("🧠 Generador de Ejercicios")
+
+nivel = st.selectbox("Selecciona el nivel de dificultad:", ["Fácil", "Intermedio", "Avanzado"])
+
+def generar_ejercicio():
+    n = round(random.uniform(0.5, 3.0), 2)
+    T = round(random.uniform(250, 350), 2)
+    V = round(random.uniform(5.0, 20.0), 2)
+    P_real = round((n * R * T) / V, 2)
+    opciones = sorted([P_real, P_real + random.uniform(0.1, 1.0), P_real - random.uniform(0.1, 1.0)])
     random.shuffle(opciones)
-    seleccion = st.radio("Elige tu respuesta:", opciones)
-    if seleccion == respuesta:
-        st.success("✅ ¡Correcto!")
-    else:
-        st.error(f"❌ Incorrecto. La respuesta correcta era {respuesta}")
-    st.markdown(f"**{random.choice(frases)}**")
+
+    st.write(f"Calcula la presión (P) dada la siguiente información:")
+    st.write(f"- Volumen: {V} L")
+    st.write(f"- Temperatura: {T} K")
+    st.write(f"- Número de moles: {n} mol")
+
+    respuesta = st.radio("Selecciona la respuesta correcta (atm):", opciones)
+
+    if st.button("Verificar respuesta"):
+        if abs(respuesta - P_real) < 0.1:
+            st.success("✅ ¡Correcto!")
+        else:
+            st.error(f"❌ Incorrecto. La respuesta correcta es {P_real:.2f} atm")
+        st.info(frase_inspiradora())
+
+if nivel != "":
+    generar_ejercicio()
