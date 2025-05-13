@@ -1,7 +1,5 @@
 import streamlit as st
 import random
-
-st.image("123.png")
 R = 0.0821  # L·atm/mol·K
 
 st.set_page_config(page_title="Calculadora de Gases Ideales", layout="centered")
@@ -10,7 +8,7 @@ st.title("🌡️ Calculadora de la Ecuación de los Gases Ideales")
 st.markdown("La ecuación universal es: **PV = nRT**")
 
 opcion = st.selectbox("¿Qué variable deseas calcular?", ["Selecciona...", "Presión (P)", "Volumen (V)", "Temperatura (T)", "Número de moles (n)"])
-
+st.image("123.png")
 def frase_inspiradora():
     frases = [
         "✨ ¡Sigue adelante, cada paso te acerca a tu meta!",
